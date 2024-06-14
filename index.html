@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación de Ventas</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <!-- Seedrandom -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <style>
+        #resultTable {
+            white-space: nowrap;
+        }
+        #myChart {
+            margin-top: 20px;
+        }
+        #replicaResult {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center my-4">Simulación de Ventas</h1>
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <label for="numDays" class="sr-only">Número de días</label>
+            <input type="number" class="form-control mb-2" id="numDays" placeholder="Número de días" min="1">
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary mb-2" onclick="runSimulation()">Ejecutar Simulación</button>
+            <button class="btn btn-danger mb-2" onclick="clearData()">Borrar Datos</button>
+        </div>
+        <div class="col-auto">
+            <label for="numReplicas" class="sr-only">Número de Réplicas</label>
+            <input type="number" class="form-control mb-2" id="numReplicas" placeholder="Número de Réplicas" value="10" min="1">
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary mb-2" onclick="runReplicas()">Ejecutar Réplicas</button>
+        </div>
+    </div>
+    <div id="progressContainer" class="progress">
+        <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+    </div>
+    <div id="replicaResult" class="alert alert-info" role="alert"></div>
+    
+    <div class="table-responsive">
+        <table id="resultTable" class="table table-striped table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Día</th>
+                    <th>NA</th>
+                    <th>Clima</th>
+                    <th>NA2</th>
+                    <th>Litros Vendidos</th>
+                    <th>Ingresos</th>
+                    <th>Utilidad Diaria</th>
+                    <th>Promedio Móvil</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div id="chartContainer" class="mt-4">
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
+<script src="simulation.js"></script>
+</body>
+</html>
